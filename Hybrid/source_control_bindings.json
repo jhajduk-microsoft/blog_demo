@@ -1,0 +1,57 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",    
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "webSiteName": {
+            "type": "string",
+            "metadata": {
+                "description": "Target website name."
+            }
+        },
+        "repoUrl": {
+            "type": "string",
+            "metadata": {
+                "description": "The URL to the GitHub repository to deploy."
+            }
+
+        },
+        "branch": {
+            "type": "string",
+            "metadata": {
+                "description": "The branch of the GitHub repository to deploy."
+            },
+            "defaultValue": "master"
+        },
+        "location": {
+            "type": "string",
+            "metadata": {
+                "description": "The location of the deployment"
+            }
+        }
+
+    },
+    "variables": {
+    },
+    "resources": [
+        {
+            "apiVersion": "2020-12-01",
+            "type": "Microsoft.Web/sites/sourcecontrols",
+            "name": "[concat(parameters('webSiteName'), '/web')]",
+            "location": "[parameters('location')]",
+            "comments" : "",
+            "condition": "[not(empty(parameters('repoUrl')))]",
+            "dependsOn": [
+            ],
+            "properties": {
+                "RepoUrl": "[parameters('repoUrl')]",
+                "branch": "[parameters('branch')]",
+                "IsManualIntegration": true,
+                "isGitHubAction": false,
+                "deploymentRollbackEnabled": false,
+                "isMercurial": false
+            }
+        }
+    ], 
+    "outputs": {
+    }
+}
