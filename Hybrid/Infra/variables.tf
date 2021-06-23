@@ -62,10 +62,6 @@ variable "alwaysOn" {
     error_message = "Enter true or false for the Always On feature."
   }
 }
-variable "numberOfWorkers" {
-  type        = number
-  description = "The number of worker roles for the app service"
-}
 variable "domainName" {
   type        = list(string)
   description = "The domain name for the app service"
