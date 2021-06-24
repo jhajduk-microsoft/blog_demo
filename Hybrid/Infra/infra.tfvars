@@ -10,7 +10,6 @@ appServiceTier = "Standard"
 appServiceSize = "S1"
 capacity = 0
 alwaysOn = true
-numberOfWorkers = 1
 domainName = ["https://terraform-CC-site.azurewebsites.net"]
 senderUPNList = "jhajduk@caegcc.onmicrosoft.com"
 serviceBusSKU = "Basic"
