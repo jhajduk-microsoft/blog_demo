@@ -1,31 +1,39 @@
 variable "baseResourceName" {
-    type = string
+  type = string
 }
 variable "botResourceGroupName" {
-    type = string
+  type = string
 }
 variable "sku" {
-    type = string
+  type = string
 }
 variable "botRegion" {
-    type = string
+  type = string
 }
 variable "botSubscriptionID" {
-    type = string
-    sensitive = true
+  type      = string
+  sensitive = true
 }
 variable "botSubscriptionClientID" {
-    type = string
-    sensitive = true
+  type      = string
+  sensitive = true
 }
 variable "botSubscriptionClientSecret" {
-    type = string
-    sensitive = true
+  type      = string
+  sensitive = true
 }
 variable "botSubscriptionTenantID" {
-    type = string
-    sensitive = true
+  type      = string
+  sensitive = true
 }
 variable "endDate" {
-    type = string
+  type = string
+}
+variable "domainName" {
+  type        = list(string)
+  description = "The domain name for the app service used for the web app configuration properties."
+}
+variable "domain" {
+  type        = string
+  description = "The domain name for the app service used for the author service principal properties."
 }

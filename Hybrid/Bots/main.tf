@@ -51,8 +51,8 @@ resource "azuread_application_password" "user_app_registration_sp_secret" {
 #Create Author App Registration
 resource "azuread_application" "author_app_registration" {
   display_name               = "${var.baseResourceName}author"
-  identifier_uris            = ["api://terraform.azurewebsites.net"]
-  reply_urls                 = ["https://terraform.azurewebsites.us/signin-simple-end"]
+  identifier_uris            = ["api://${var.domain}"]
+  reply_urls                 = ["https://${var.domain}"]
   available_to_other_tenants = true
   oauth2_allow_implicit_flow = false
   type                       = "webapp/api"
@@ -105,9 +105,6 @@ resource "azuread_application" "author_app_registration" {
   }
 
   optional_claims {
-    id_token {
-      name = "appClaim"
-    }
     access_token {
       name                  = "upn"
       source                = null
